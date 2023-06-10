@@ -7,3 +7,4 @@ export const CoffeeStore = [
   StoreModule.forFeature('coffees', coffeeReducer),
   EffectsModule.forFeature([CoffeeEffects]),
 ];
+//

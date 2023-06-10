@@ -8,17 +8,23 @@ import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { coffeeReducer } from './store/coffee.reducer';
-import { CoffeeEffects } from './store/coffee.effects';
 import { HttpClientModule } from '@angular/common/http';
 import { CoffeeStore } from './store';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatGridListModule } from '@angular/material/grid-list';
+import { MaterialModule } from './material-ui-module';
+import { FooterComponent } from './components/footer/footer.component';
+
 @NgModule({
-  declarations: [AppComponent, ProductListComponent, ProductDetailsComponent],
+  declarations: [
+    AppComponent,
+    ProductListComponent,
+    ProductDetailsComponent,
+    FooterComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -29,7 +35,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     HttpClientModule,
     MatPaginatorModule,
     FlexLayoutModule,
-    MatGridListModule,
+    MaterialModule,
     StoreModule.forFeature('coffee', coffeeReducer),
   ],
   exports: [MatToolbarModule, MatButtonModule, MatPaginatorModule],

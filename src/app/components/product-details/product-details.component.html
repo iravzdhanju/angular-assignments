@@ -1,0 +1,36 @@
+<!-- <div *ngIf="coffeeDetails">
+  <h3>{{ coffeeDetails.blend_name }}</h3>
+  <p>{{ coffeeDetails.origin }}</p>
+  <p>{{ coffeeDetails.variety }}</p>
+  <p>{{ coffeeDetails.notes }}</p>
+  <p>{{ coffeeDetails.intensifier }}</p>
+</div> -->
+<div class="returnToHomeComponent">
+  <button
+    mat-icon-button
+    color="primary"
+    aria-label="Example icon button with a home icon"
+    style="background-color: #f2f3f4"
+    (click)="goToHome()"
+  >
+    <mat-icon>home</mat-icon>
+  </button>
+  <!-- Return to product page -->
+</div>
+<div *ngIf="coffeeDetails" class="w-100 mt-5 productDetailsComponent">
+  <div class="card text-bg-light mb-3" style="max-width: 18rem">
+    <div class="card-header text-center">Product Details</div>
+    <div class="card-body">
+      <h5 class="card-title">{{ coffeeDetails.blend_name }}</h5>
+      <p class="card-text">Origin:- {{ coffeeDetails.origin }}</p>
+      <p class="card-text">Variety:- {{ coffeeDetails.variety }}</p>
+      <p class="card-text">Notes:- {{ coffeeDetails.notes }}</p>
+      <p class="card-text">Intensifier:-{{ coffeeDetails.intensifier }}</p>
+    </div>
+  </div>
+</div>
+<div *ngIf="!coffeeDetails" class="text-center mt-5 alertComponent">
+  <div class="alert alert-warning alertPage">
+    Please select a coffee from Products page
+  </div>
+</div>
