@@ -16,9 +16,14 @@ export class CoffeeEffects {
     this.actions$.pipe(
       ofType(loadCoffees),
       mergeMap((action) =>
-        this.coffeeService
-          .getCoffees(action.size, action.page)
-          .pipe(map((coffees: any[]) => loadCoffeesSuccess({ coffees })))
+        this.coffeeService.getCoffees(action.size, action.page).pipe(
+          map((response: { coffees: any[]; total: number }) =>
+            loadCoffeesSuccess({
+              coffees: response.coffees,
+              total: response.total,
+            })
+          )
+        )
       )
     )
   );

@@ -30,6 +30,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
     MatPaginatorModule,
     FlexLayoutModule,
     MatGridListModule,
+    StoreModule.forFeature('coffee', coffeeReducer),
   ],
   exports: [MatToolbarModule, MatButtonModule, MatPaginatorModule],
   providers: [],

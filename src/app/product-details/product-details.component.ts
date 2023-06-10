@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { selectCoffees } from '../store/coffee.selectors';
+import { selectAllCoffees as selectCoffees } from '../store/coffee.selectors';
 
 @Component({
   selector: 'app-product-details',

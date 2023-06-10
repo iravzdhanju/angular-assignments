@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -12,10 +12,13 @@ export class CoffeeService {
 
   constructor(private http: HttpClient) {}
 
-  getCoffees(limit: number, page: number): Observable<any[]> {
+  getCoffees(
+    limit: number,
+    page: number
+  ): Observable<{ coffees: any[]; total: number }> {
     const cachedCoffees = this.coffeeListCache.get(page);
     if (cachedCoffees) {
-      return of(cachedCoffees);
+      return of({ coffees: cachedCoffees, total: 50 });
     }
 
     return this.http
@@ -23,7 +26,8 @@ export class CoffeeService {
       .pipe(
         tap((data) => {
           this.coffeeListCache.set(page, data);
-        })
+        }),
+        map((data) => ({ coffees: data, total: 50 }))
       );
   }
 }
