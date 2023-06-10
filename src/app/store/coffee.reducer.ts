@@ -17,13 +17,13 @@ export const initialState: CoffeeState = {
 
 export const coffeeReducer = createReducer(
   initialState,
-  on(loadCoffees, (state) => ({ ...state, loading: true })),
+  on(loadCoffees, state => ({ ...state, loading: true })),
   on(loadCoffeesSuccess, (state, { coffees, total }) => ({
     ...state,
     coffees,
     total,
     loading: false,
-  }))
+  })),
 );
 export function reducer(state: CoffeeState | undefined, action: Action) {
   return coffeeReducer(state, action);

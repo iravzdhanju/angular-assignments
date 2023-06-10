@@ -9,22 +9,22 @@ import { CoffeeService } from '../services/coffee.service';
 export class CoffeeEffects {
   constructor(
     private actions$: Actions,
-    private coffeeService: CoffeeService
+    private coffeeService: CoffeeService,
   ) {}
 
   loadCoffees$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadCoffees),
-      mergeMap((action) =>
+      mergeMap(action =>
         this.coffeeService.getCoffees(action.size, action.page).pipe(
           map((response: { coffees: any[]; total: number }) =>
             loadCoffeesSuccess({
               coffees: response.coffees,
               total: response.total,
-            })
-          )
-        )
-      )
-    )
+            }),
+          ),
+        ),
+      ),
+    ),
   );
 }

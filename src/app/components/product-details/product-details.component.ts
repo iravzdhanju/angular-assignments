@@ -17,16 +17,14 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private store: Store,
-    private router: Router
+    private router: Router,
   ) {
     this.coffeeId = this.route.snapshot.paramMap.get('id') || '';
   }
 
   ngOnInit(): void {
-    this.coffees$.subscribe((coffees) => {
-      this.coffeeDetails = coffees.find(
-        (coffee) => coffee.id === +this.coffeeId
-      );
+    this.coffees$.subscribe(coffees => {
+      this.coffeeDetails = coffees.find(coffee => coffee.id === +this.coffeeId);
     });
   }
 

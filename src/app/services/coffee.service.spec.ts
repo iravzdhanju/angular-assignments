@@ -37,7 +37,7 @@ describe('CoffeeService', () => {
 
     const result$ = service.getCoffees(10, 1);
 
-    result$.subscribe((result) => {
+    result$.subscribe(result => {
       expect(result.coffees).toEqual(cachedCoffees);
       expect(result.total).toBe(50);
     });
@@ -52,12 +52,12 @@ describe('CoffeeService', () => {
 
     const result$ = service.getCoffees(10, 2);
 
-    result$.subscribe((result) => {
+    result$.subscribe(result => {
       expect(service['coffeeListCache'].get(2)).toEqual(apiResponse);
       expect(result.coffees).toEqual(apiResponse);
       expect(result.total).toBe(50);
       expect(service['http'].get).toHaveBeenCalledWith(
-        `${service['apiUrl']}?size=10&page=2`
+        `${service['apiUrl']}?size=10&page=2`,
       );
     });
   });

@@ -60,7 +60,7 @@ describe('ProductListComponent', () => {
   it('should load coffees', () => {
     expect(store.dispatch).toHaveBeenCalled();
     expect(store.dispatch).toHaveBeenCalledWith(
-      loadCoffees({ page: 1, size: 10 })
+      loadCoffees({ page: 1, size: 10 }),
     );
   });
 
@@ -70,7 +70,7 @@ describe('ProductListComponent', () => {
 
     expect(component.currentPage).toBe(2);
     expect(store.dispatch).toHaveBeenCalledWith(
-      loadCoffees({ page: 3, size: 20 })
+      loadCoffees({ page: 3, size: 20 }),
     );
   });
 });

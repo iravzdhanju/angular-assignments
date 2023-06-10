@@ -14,7 +14,7 @@ export class CoffeeService {
 
   getCoffees(
     limit: number,
-    page: number
+    page: number,
   ): Observable<{ coffees: any[]; total: number }> {
     const cachedCoffees = this.coffeeListCache.get(page);
     if (cachedCoffees) {
@@ -24,10 +24,10 @@ export class CoffeeService {
     return this.http
       .get<any[]>(`${this.apiUrl}?size=${limit}&page=${page}`)
       .pipe(
-        tap((data) => {
+        tap(data => {
           this.coffeeListCache.set(page, data);
         }),
-        map((data) => ({ coffees: data, total: 50 }))
+        map(data => ({ coffees: data, total: 50 })),
       );
   }
 }

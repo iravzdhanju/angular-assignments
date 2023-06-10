@@ -28,7 +28,7 @@ export class ProductListComponent implements OnInit {
   constructor(private store: Store) {
     this.store
       .select(selectTotalCoffees)
-      .subscribe((total) => (this.totalCoffees = total));
+      .subscribe(total => (this.totalCoffees = total));
   }
 
   ngOnInit(): void {
