@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { selectAllCoffees as selectCoffees } from '../../store/coffee.selectors';
@@ -7,6 +7,7 @@ import { selectAllCoffees as selectCoffees } from '../../store/coffee.selectors'
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductDetailsComponent implements OnInit {
   coffeeId: string;
@@ -30,6 +31,6 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   goToHome() {
-    this.router.navigate(['/']); // Replace '/' with the path to your home route.
+    this.router.navigate(['/']);
   }
 }

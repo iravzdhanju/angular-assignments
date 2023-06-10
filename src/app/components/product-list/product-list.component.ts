@@ -1,4 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { loadCoffees } from 'src/app/store/coffee.actions';
@@ -12,6 +17,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductListComponent implements OnInit {
   @ViewChild('paginator') paginator!: MatPaginator;
@@ -39,7 +45,3 @@ export class ProductListComponent implements OnInit {
     this.loadCoffees(event.pageIndex, event.pageSize);
   }
 }
-
-//
-
-//
