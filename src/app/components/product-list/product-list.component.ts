@@ -14,6 +14,7 @@ export class ProductListComponent implements OnInit {
   @ViewChild('paginator') paginator!: MatPaginator;
   coffees$: Observable<any[]>;
   currentPage = 0;
+  totalCoffees = 0;
 
   constructor(private store: Store, private cdr: ChangeDetectorRef) {
     this.coffees$ = this.store.select(selectCoffees);
@@ -22,22 +23,18 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.loadCoffees(this.currentPage, 10);
   }
-
-  ngAfterViewInit(): void {
-    this.paginator.page.subscribe((event: PageEvent) => {
-      this.pageChanged(event);
-    });
-    this.cdr.detectChanges();
-  }
-
   loadCoffees(pageIndex: number, pageSize: number): void {
     this.store.dispatch(loadCoffees({ page: pageIndex + 1, size: pageSize }));
+
+    this.coffees$.subscribe((data: any) => {
+      this.totalCoffees = data.length;
+    });
   }
 
   pageChanged(event: any): void {
     this.currentPage = event.pageIndex;
     this.loadCoffees(event.pageIndex, event.pageSize);
-
-    this.paginator.page.emit(event);
   }
 }
+
+//

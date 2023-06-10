@@ -1,15 +1,23 @@
 <mat-paginator
   #paginator
-  [length]="(coffees$ | async)?.length"
+  [length]="totalCoffees"
   [pageSize]="10"
   (page)="pageChanged($event)"
->
-</mat-paginator>
+></mat-paginator>
 
-<div *ngFor="let coffee of coffees$ | async">
-  <h3>{{ coffee.blend_name }}</h3>
-  <p>{{ coffee.origin }}</p>
-  <p>{{ coffee.variety }}</p>
-  <p>{{ coffee.notes }}</p>
-  <p>{{ coffee.intensifier }}</p>
+<!--  -->
+<div class="grid-component">
+  <div class="grid-coffee-component">
+    <div class="card" *ngFor="let coffee of coffees$ | async">
+      <h3>
+        <a [routerLink]="['/product-details', coffee.id]">{{
+          coffee.blend_name
+        }}</a>
+      </h3>
+      <p>{{ coffee.origin }}</p>
+      <p>{{ coffee.variety }}</p>
+      <p>{{ coffee.notes }}</p>
+      <p>{{ coffee.intensifier }}</p>
+    </div>
+  </div>
 </div>

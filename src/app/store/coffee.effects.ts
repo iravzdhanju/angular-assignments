@@ -1,21 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, mergeMap } from 'rxjs/operators';
-import { HttpClient } from '@angular/common/http';
+
 import { loadCoffees, loadCoffeesSuccess } from './coffee.actions';
+import { CoffeeService } from '../services/coffee.service';
 
 @Injectable()
 export class CoffeeEffects {
-  constructor(private actions$: Actions, private http: HttpClient) {}
+  constructor(
+    private actions$: Actions,
+    private coffeeService: CoffeeService
+  ) {}
 
   loadCoffees$ = createEffect(() =>
     this.actions$.pipe(
       ofType(loadCoffees),
       mergeMap((action) =>
-        this.http
-          .get<any[]>(
-            `https://random-data-api.com/api/coffee/random_coffee?size=50&page=${action.page}`
-          )
+        this.coffeeService
+          .getCoffees(action.size, action.page)
           .pipe(map((coffees: any[]) => loadCoffeesSuccess({ coffees })))
       )
     )

@@ -3,7 +3,3 @@ export interface CoffeeState {
   loading: boolean;
   error: any;
 }
-
-//
-
-//

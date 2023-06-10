@@ -14,9 +14,11 @@ import { CoffeeStore } from './store';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatGridListModule } from '@angular/material/grid-list';
 @NgModule({
-  declarations: [AppComponent, ProductListComponent],
+  declarations: [AppComponent, ProductListComponent, ProductDetailsComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -26,6 +28,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     BrowserAnimationsModule,
     HttpClientModule,
     MatPaginatorModule,
+    FlexLayoutModule,
+    MatGridListModule,
   ],
   exports: [MatToolbarModule, MatButtonModule, MatPaginatorModule],
   providers: [],
