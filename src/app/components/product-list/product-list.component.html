@@ -1,0 +1,15 @@
+<mat-paginator
+  #paginator
+  [length]="(coffees$ | async)?.length"
+  [pageSize]="10"
+  (page)="pageChanged($event)"
+>
+</mat-paginator>
+
+<div *ngFor="let coffee of coffees$ | async">
+  <h3>{{ coffee.blend_name }}</h3>
+  <p>{{ coffee.origin }}</p>
+  <p>{{ coffee.variety }}</p>
+  <p>{{ coffee.notes }}</p>
+  <p>{{ coffee.intensifier }}</p>
+</div>
