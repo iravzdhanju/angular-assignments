@@ -27,12 +27,10 @@ $coffee-shop-theme: mat.define-light-theme((
     warn: $coffee-shop-warn,
   )
 ));
-
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($coffee-shop-theme);
-
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
